@@ -67,11 +67,11 @@ Each section is a `<section id="...">`, and the nav links point to these ids.
 
 | id | What it shows |
 |---|---|
-| `home` (on `<main>`) | Hero: association name in English and Kannada, tagline, two buttons, and two team photos (`#teams`). On mobile the photos come first and swipe sideways, with a `#swipe` hint. |
+| `home` (on `<main>`) | Hero: association name in English and Kannada, tagline, two buttons, and two team photos (`#teams`). On mobile the photos come first and auto-rotate every 4 seconds, with dots (`#teams-dots`). On a laptop both show side by side. |
 | `about` | About KRA (draft text) and four values. |
 | `leadership` | Adhyaksha message (draft), the current committee of 6 with photos, trustees (placeholders), and past committees (placeholder). |
 | `events` | Upcoming events (rendered from the JS `upcoming` array into `#upcoming`). Past events: KRA Cricket Tournament 2026 with its details, banner image and league fixtures. |
-| `sponsors` | Sponsor posters strip and sponsor cards. |
+| `sponsors` | Sponsor posters (`#posters`, auto-rotating on mobile with dots `#posters-dots`) and sponsor cards. |
 | `gallery` | Album filter buttons (`#albums`) and a photo grid (`#gallery-grid`), rendered from the JS `photos` array. Tapping a photo opens a lightbox (`#lb`). |
 | `members` | Searchable member directory (`#msearch`, `#mrows`), rendered from the JS `members` array. |
 | `documents` | List of documents, all marked "Coming soon". |
@@ -106,6 +106,8 @@ To add a new event album, add photos with a new `ev` name, e.g. `ev:"Ganesha Fes
 ```js
 const members=[ {n:"Name", f:"Firm", a:"Block/area", y:"Member since", s:1}, ... ];
 ```
+
+**Carousels.** `carousel(box, dotsEl, delayMs)` in the script makes any horizontal strip auto-rotate with dots, but only when it overflows (on mobile). Rotation pauses for 8 seconds after a touch, stops when the strip is off-screen, and is disabled for `prefers-reduced-motion`. Tapping any image in `#teams`, `#posters` or `#gallery-grid` opens the lightbox. To add a new carousel, give it slides as direct children and call `carousel(...)`.
 
 **Static HTML.** These parts are plain HTML, not data arrays. Edit them directly:
 
