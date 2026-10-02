@@ -4,9 +4,9 @@ Read this file before making any change to `index.html`.
 
 ## What this project is
 
-This repository holds the official public website of the **Koramangala Realtors Association (R)**, also called **KRA**. Its Kannada name is ಕೋರಮಂಗಲ ರಿಯಾಲ್ಟರ್ಸ್ ಅಸೋಸಿಯೇಷನ್ (ರಿ).
+This repository holds the official public website of the **Koramangala Realtors Association (R)**, also called **KRA**. Its official Kannada name (from the KRA letterhead) is ಕೋರಮಂಗಲ ರಿಯಲ್ಟರ್ಸ್ ಅಸೋಸಿಯೇಷನ್ (ರಿ).
 
-KRA is a registered association (Reg. 2021-22) of real estate professionals in Koramangala, Bengaluru, Karnataka, India. Its members are brokers, builders, promoters and landlords. The tagline is "Together we grow, together we build."
+KRA is a registered association (Reg. No. DRB3/SOR/646/21-22, registered 2021-22). Its office is at #823, 21st 'A' Main Road, 8th Block, Koramangala, Bengaluru 560095. KRA's own forms sometimes use the heading "Real Estate Association", but the registered name is Koramangala Realtors Association (R) of real estate professionals in Koramangala, Bengaluru, Karnataka, India. Its members are brokers, builders, promoters and landlords. The tagline is "Together we grow, together we build."
 
 The site is a **public information website**. It has:
 
@@ -34,7 +34,8 @@ Thrishula coordinates the project. KRA sends content (photos, names, details) on
 
 ```
 /
-├── index.html   ← the entire website (HTML + CSS + JS + images, all in one file)
+├── index.html   ← the website (HTML + CSS + JS)
+├── images/      ← all photos (photo-01.jpg … photo-79.jpg, plus the logo PNG)
 └── CLAUDE.md    ← this file
 ```
 
@@ -48,18 +49,8 @@ The site is a single, self-contained page with no build step, no framework and n
 
 - **CSS** sits in one `<style>` block in `<head>`. All colours are CSS variables on `:root`, with a dark-mode set under `prefers-color-scheme: dark` and `[data-theme="dark"]`.
 - **JS** sits in one `<script>` block at the end of `<body>`. It is plain vanilla JavaScript.
-- **Images** are embedded as **base64 data URIs** (`data:image/jpeg;base64,...`). This makes the file about 2 MB, with very long lines.
-  - Do not try to read or rewrite the base64 strings.
-  - When editing near them, match on the surrounding HTML or JS, not on the image data.
+- **Images** live in `/images/` and are referenced by relative path (e.g. `images/photo-12.jpg`). Every image except the first home page photo and the logo uses `loading="lazy"`. Keep new photos to at most about 1000px on the long side, JPEG quality 55–65, so the site stays fast on mobile data.
 - **Fonts** come from Google Fonts: "Anek Latin" for English and "Anek Kannada" for Kannada, with system fallbacks. Kannada text uses the `.kn` class.
-
-### Recommended refactor (only if asked)
-
-The site could move images out of base64 into an `/images/` folder, e.g. `images/gallery/cricket-2026/01.jpg`, and reference them by path. This makes the file small and easy to edit. If you do this:
-
-- Resize photos to at most 1200px on the long side.
-- Compress them as JPEG at quality 70–75.
-- Keep `loading="lazy"` on gallery images.
 
 ## Page sections, in order
 
@@ -67,11 +58,11 @@ Each section is a `<section id="...">`, and the nav links point to these ids.
 
 | id | What it shows |
 |---|---|
-| `home` (on `<main>`) | Hero: association name in English and Kannada, tagline, two buttons, and two team photos (`#teams`). On mobile the photos come first and auto-rotate every 4 seconds, with dots (`#teams-dots`). On a laptop both show side by side. |
+| `home` (on `<main>`) | Hero: association name in English and Kannada, tagline, two buttons, and a rotating photo strip (`#teams`) of the 7 photos the client chose (Drive folder "Seo"), in this order: KRA committee with the minister, the meeting with Bengaluru City Police, the meeting at the association hall, KRA members, the minister meeting (second photo), and two tournament team photos. Cricket photos must not come first. Other event photos belong in the rotating strips inside each event under Events, and in the gallery. It shows 1 photo at a time on mobile (where photos come first) and 2 at a time on a laptop. The first move is after 2 seconds, then every 3 seconds, with dots (`#teams-dots`). |
 | `about` | About KRA (draft text) and four values. |
 | `leadership` | Adhyaksha message (draft), the current committee of 6 with photos, trustees (placeholders), and past committees (placeholder). |
-| `events` | Upcoming events (rendered from the JS `upcoming` array into `#upcoming`). Past events: KRA Cricket Tournament 2026 with its details, banner image and league fixtures. |
-| `sponsors` | Sponsor posters (`#posters`, auto-rotating on mobile with dots `#posters-dots`) and sponsor cards. |
+| `events` | Upcoming events (rendered from the JS `upcoming` array into `#upcoming`). Past events, each with its own rotating photo strip (`#meet-strip`, `#cricket-strip`, `#election-strip`): Meetings and visits 2026; KRA Cricket Tournament 2026 (details, banner, fixtures); and the KRA Election and installation ceremony 2026. |
+| `sponsors` | Sponsor posters (`#posters`, auto-rotating on mobile: first move after 1 second, then every 2 seconds, with dots `#posters-dots`) and sponsor cards. |
 | `gallery` | Album filter buttons (`#albums`) and a photo grid (`#gallery-grid`), rendered from the JS `photos` array. Tapping a photo opens a lightbox (`#lb`). |
 | `members` | Searchable member directory (`#msearch`, `#mrows`), rendered from the JS `members` array. |
 | `documents` | List of documents, all marked "Coming soon". |
@@ -99,7 +90,7 @@ const upcoming=[
 const photos=[ {cap:"Prize distribution with the committee", ev:"Cricket Tournament 2026", src:"data:image/jpeg;base64,..."}, ... ];
 ```
 
-To add a new event album, add photos with a new `ev` name, e.g. `ev:"Ganesha Festival 2026"`. Do not add near-duplicate photos (the same group in the same pose). Pick the one where the most people are clearly visible.
+Current albums: "Meetings and visits 2026" (5 photos), "Cricket Tournament 2026" (17 photos) and "Election & Installation 2026" (20 photos). The client wants every tournament photo kept in the gallery, so do not trim albums. To add a new event album, add photos with a new `ev` name, e.g. `ev:"Ganesha Festival 2026"`.
 
 **Members.** Rows with `s:1` are dummy rows and show a "Sample" badge. Remove them when the real list arrives.
 
@@ -107,7 +98,7 @@ To add a new event album, add photos with a new `ev` name, e.g. `ev:"Ganesha Fes
 const members=[ {n:"Name", f:"Firm", a:"Block/area", y:"Member since", s:1}, ... ];
 ```
 
-**Carousels.** `carousel(box, dotsEl, delayMs)` in the script makes any horizontal strip auto-rotate with dots, but only when it overflows (on mobile). Rotation pauses for 8 seconds after a touch, stops when the strip is off-screen, and is disabled for `prefers-reduced-motion`. Tapping any image in `#teams`, `#posters` or `#gallery-grid` opens the lightbox. To add a new carousel, give it slides as direct children and call `carousel(...)`.
+**Carousels.** `carousel(box, dotsEl, delayMs, firstDelayMs)` in the script makes any horizontal strip auto-rotate with dots, but only when it overflows (on mobile). Rotation pauses for 8 seconds after a touch, and stops when the strip is off-screen. Under `prefers-reduced-motion` it still rotates but jumps instead of sliding. Many phones have this setting on, and the client wants rotation everywhere. Tapping any image in `#teams`, `#posters` or `#gallery-grid` opens the lightbox. To add a new carousel, give it slides as direct children and call `carousel(...)`.
 
 **Static HTML.** These parts are plain HTML, not data arrays. Edit them directly:
 
@@ -140,7 +131,11 @@ The English spellings were transliterated from Kannada and still need KRA's conf
 - **Date and time:** Monday, 31 August 2026, 7:00 AM onwards.
 - **Venue:** St. John's Sports Ground, Hosur Road, Bengaluru (Ground C).
 - **Format:** 6 teams, one day: league matches (6 overs each), semi-finals and final.
-- **Chief guest:** Minister for Forest and Environment, Government of Karnataka. The name is not given in the materials, so do not add one.
+- **Chief guest:** Sri Ramalinga Reddy (ಶ್ರೀ ರಾಮಲಿಂಗಾರೆಡ್ಡಿ), **Minister for Forest, Ecology and Environment, Government of Karnataka**. His portfolio history:
+  - Transport Minister until May 2026.
+  - Major and Medium Irrigation from June 2026.
+  - Forest, Ecology and Environment since 12 August 2026 (verified in news reports, October 2026).
+  - If this changes again, update every mention on the site.
 - **League fixtures:**
 
 | Time | Match |
@@ -153,7 +148,24 @@ The English spellings were transliterated from Kannada and still need KRA's conf
 | 11:35 | Team A vs Team D |
 
 - **Not yet known:** semi-final and final results.
+- **Do not label people in photos by name** unless KRA confirms who is in that photo.
 - **Teams in photos:** two teams appear, an orange-and-blue jersey team and a light-blue jersey team, both with trophies.
+
+### Meetings and visits 2026
+
+- **Meeting with the minister:** the KRA committee met Sri Ramalinga Reddy (photos supplied by the client as the minister meeting).
+- **Meeting with Bengaluru City Police:** the committee met officers (the office sign reads ಬೆಂಗಳೂರು ನಗರ ಪೊಲೀಸ್).
+- **Meeting at the association hall:** a meeting with felicitation was held there.
+- **Missing details:** dates are not yet known.
+
+### KRA Election and installation ceremony 2026
+
+- **Election:** held 25 June 2026. Ballot papers exist for President, Secretary, Joint Secretary and Treasurer.
+- **Results:** the elected committee is the one in the Leadership section, and each member received an election certificate (ಪ್ರಮಾಣ ಪತ್ರ).
+- **Installation ceremony (ಪದಗ್ರಹಣ ಸಮಾರಂಭ):** its programme is listed on the site. Its date is not yet known.
+- **Privacy rules for this event:**
+  - Do not publish ballot papers, because they show candidates who were not elected.
+  - Never publish filled nomination forms, because they contain Aadhaar numbers.
 
 ### Sponsors
 
@@ -166,18 +178,20 @@ The English spellings were transliterated from Kannada and still need KRA's conf
 | Yogendra Builders | Building construction. |
 | Yashas Real Estate | Nagaraj, Koramangala. |
 | Vasudev Reddy | Sponsor. |
+| MG Builders | Trophy sponsor. Houses, villas and construction. No. 174, 'C' Cross, 1st Main, 7th Block, Koramangala, Bengaluru 560095. |
+| Vinoth, Pelican | Proud sponsor. C.K. Plaza, Bellary Road, Gangenahalli, Bengaluru 560006. |
 
 ## Still placeholder / waiting for KRA
 
 - KRA's own About text and the President's message (current text is a draft written for them).
 - Trustee and founding member names, and past committees from 2021-22 onward.
 - Real members list (remove the `s:1` sample rows).
-- Office address, phone/WhatsApp and email (email is a placeholder until the domain exists).
+- Phone/WhatsApp and email (email is a placeholder until the domain exists). The office address and registration number are confirmed and already on the site.
 - Social media links (footer `href="#"`).
 - Documents (PDFs): registration certificate, bye-laws, circulars.
 - Tournament results.
 - Upcoming event details.
-- A clean, high-resolution KRA logo. The current one was cropped from a photo of the banner.
+- An original KRA logo file. The current logo and office bearer photos are cropped from the digital tournament poster (KRA Poster.pdf).
 
 ## Design rules (keep the site consistent)
 
@@ -222,4 +236,5 @@ Always use these variables. Never hard-code new colours.
 1. Open `index.html` in a browser at phone width (390px) and laptop width (1280px).
 2. Check that the browser console has no JS errors.
 3. Check that nav links jump to the right sections, that the mobile "Menu" button opens and closes, that the gallery album buttons filter correctly, that the lightbox opens and closes (including the Esc key), and that the member search filters rows.
-4. Keep the file name `index.html`. GitHub Pages needs it.
+4. Keep the file name `index.html` and keep the `images` folder next to it. GitHub Pages needs both.
+5. Test over a local web server (e.g. `python3 -m http.server`) and confirm that no image is broken.
