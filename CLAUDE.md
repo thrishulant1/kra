@@ -35,7 +35,7 @@ Thrishula coordinates the project. KRA sends content (photos, names, details) on
 ```
 /
 ├── index.html   ← the website (HTML + CSS + JS)
-├── images/      ← all photos (photo-01.jpg … photo-79.jpg, plus the logo PNG)
+├── images/      ← all photos, named by section and number (see Image naming)
 └── CLAUDE.md    ← this file
 ```
 
@@ -49,8 +49,25 @@ The site is a single, self-contained page with no build step, no framework and n
 
 - **CSS** sits in one `<style>` block in `<head>`. All colours are CSS variables on `:root`, with a dark-mode set under `prefers-color-scheme: dark` and `[data-theme="dark"]`.
 - **JS** sits in one `<script>` block at the end of `<body>`. It is plain vanilla JavaScript.
-- **Images** live in `/images/` and are referenced by relative path (e.g. `images/photo-12.jpg`). Every image except the first home page photo and the logo uses `loading="lazy"`. Keep new photos to at most about 1000px on the long side, JPEG quality 55–65, so the site stays fast on mobile data.
+- **Images** live in `/images/` and are referenced by relative path (e.g. `images/home-01.jpg`). Every image except the first home page photo and the logo uses `loading="lazy"`. Keep new photos to at most about 1000px on the long side, JPEG quality 55–65, so the site stays fast on mobile data.
 - **Fonts** come from Google Fonts: "Anek Latin" for English and "Anek Kannada" for Kannada, with system fallbacks. Kannada text uses the `.kn` class.
+
+## Image naming
+
+Every file in `/images/` is named `<section>-<number>[-<person>].jpg`, so it is clear where each photo is used:
+
+| Prefix | Where it is used |
+|---|---|
+| `kra-logo.png` | Header logo |
+| `home-01` … | Rotating home page photos |
+| `committee-2026-NN-<name>` | Current committee cards (01 is the President; it is also used in the Adhyaksha message) |
+| `committee-2021-NN-<name>` | First committee cards  |
+| `event-meetings-2026-NN` / `event-cricket-2026-NN` / `event-election-2026-NN` | Rotating strips inside each past event |
+| `event-cricket-2026-banner-01` | Tournament banner beside the event details |
+| `sponsor-poster-NN` | Rotating sponsor posters |
+| `gallery-<album>-NN` | Gallery photos, by album |
+
+When adding a photo, follow the same pattern and continue the numbering. To replace a person's photo, overwrite the file with the same name.
 
 ## Page sections, in order
 
@@ -158,6 +175,24 @@ The English spellings were transliterated from Kannada and still need KRA's conf
 - **Meeting at the association hall:** a meeting with felicitation was held there.
 - **Missing details:** dates are not yet known.
 
+### First committee (23 March 2021)
+
+| Post | Name | Status |
+|---|---|---|
+| President | Mahesh S N (Mahesh Gowda) | Confirmed |
+| Vice President | Mallikarjuna | Confirmed |
+| General Secretary | Kaarthik | Post confirmed; photo to be confirmed |
+| Joint Secretary | Somasundaram | Post confirmed; photo to be confirmed |
+| Joint Secretary | Jivan | Post confirmed; photo to be confirmed |
+| Joint Secretary | Bharat | Post confirmed; photo to be confirmed |
+| Treasurer | Nagaraj N G V | Confirmed |
+| Committee member | Kalesh | To be confirmed |
+| Legal Advisor | Shah | Confirmed |
+| Legal Advisor | Guru Prasad | To be confirmed (KRA replied to the red t-shirt photo, sent at 4:39 pm, with "Shah and Guru Prasad legal advisor") |
+
+- **"To be confirmed" tags:** the photos for Kaarthik, Somasundaram, Jivan and Bharat were assigned in the order they were sent on WhatsApp (4:28, 4:30, 4:32 and 4:34 pm). Kalesh was assigned to the 4:42 pm photo. These cards show a "To be confirmed" tag (`<span class="tbc">`). Remove the tag once KRA approves, or swap the image files if a name is wrong.
+- **Photo crops:** faces only. The register pages behind the photos contain handwritten addresses and phone numbers, so never publish the full pages.
+
 ### KRA Election and installation ceremony 2026
 
 - **Election:** held 25 June 2026. Ballot papers exist for President, Secretary, Joint Secretary and Treasurer.
@@ -184,7 +219,7 @@ The English spellings were transliterated from Kannada and still need KRA's conf
 ## Still placeholder / waiting for KRA
 
 - KRA's own About text and the President's message (current text is a draft written for them).
-- Trustee and founding member names, and past committees from 2021-22 onward.
+- Trustee and founding member names, and the names and posts of the six unnamed first-committee members.
 - Real members list (remove the `s:1` sample rows).
 - Phone/WhatsApp and email (email is a placeholder until the domain exists). The office address and registration number are confirmed and already on the site.
 - Social media links (footer `href="#"`).
@@ -233,8 +268,9 @@ Always use these variables. Never hard-code new colours.
 
 ## Before committing a change
 
-1. Open `index.html` in a browser at phone width (390px) and laptop width (1280px).
-2. Check that the browser console has no JS errors.
-3. Check that nav links jump to the right sections, that the mobile "Menu" button opens and closes, that the gallery album buttons filter correctly, that the lightbox opens and closes (including the Esc key), and that the member search filters rows.
-4. Keep the file name `index.html` and keep the `images` folder next to it. GitHub Pages needs both.
-5. Test over a local web server (e.g. `python3 -m http.server`) and confirm that no image is broken.
+1. Deliver every update as the whole folder zipped (`index.html`, `CLAUDE.md`, `images/`). The client uploads the zip contents to GitHub in one go.
+2. Open `index.html` in a browser at phone width (390px) and laptop width (1280px).
+3. Check that the browser console has no JS errors.
+4. Check that nav links jump to the right sections, that the mobile "Menu" button opens and closes, that the gallery album buttons filter correctly, that the lightbox opens and closes (including the Esc key), and that the member search filters rows.
+5. Keep the file name `index.html` and keep the `images` folder next to it. GitHub Pages needs both.
+6. Test over a local web server (e.g. `python3 -m http.server`) and confirm that no image is broken.
