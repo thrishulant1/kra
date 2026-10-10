@@ -187,7 +187,7 @@ The English spellings were transliterated from Kannada and still need KRA's conf
 | Joint Secretary | Nagraj Rao |
 | Treasurer | Nagaraj N G V |
 
-All confirmed by KRA, with a named photo for each person.
+All confirmed by KRA, with a named photo for each person. Swamy Sajjana's photo was resent by KRA as a clear copy.
 
 ### First committee (23 March 2021)
 
@@ -197,8 +197,7 @@ All confirmed by KRA, with a named photo for each person.
 | Vice President | Mallikarjuna | Confirmed |
 | General Secretary | Kaarthik | Photo confirmed (same photo in the 2024 committee) |
 | Joint Secretary | Somasundaram | Photo matched by message order |
-| Committee member | Swamy Sajjana | Photo confirmed (same photo in the 2024 committee); 2021 post not given |
-| Joint Secretary | Jivan | No photo yet (card shows an initial) |
+| Joint Secretary | Jeevan | Photo confirmed by KRA |
 | Joint Secretary | Bharat | Photo matched by message order |
 | Treasurer | Nagaraj N G V | Confirmed |
 | Committee member | Kalesh | Photo matched by message order |
