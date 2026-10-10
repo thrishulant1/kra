@@ -60,8 +60,9 @@ Every file in `/images/` is named `<section>-<number>[-<person>].jpg`, so it is 
 |---|---|
 | `kra-logo.png` | Header logo |
 | `home-01` … | Rotating home page photos |
-| `committee-2026-NN-<name>` | Current committee cards (01 is the President; it is also used in the Adhyaksha message) |
-| `committee-2021-NN-<name>` | First committee cards  |
+| `committee-2026-NN-<name>` | Current committee cards (01 is the President, also used in the Adhyaksha message) |
+| `committee-2024-NN-<name>` | Second committee cards |
+| `committee-2021-NN-<name>` | First committee cards |
 | `event-meetings-2026-NN` / `event-cricket-2026-NN` / `event-election-2026-NN` | Rotating strips inside each past event |
 | `event-cricket-2026-banner-01` | Tournament banner beside the event details |
 | `sponsor-poster-NN` | Rotating sponsor posters |
@@ -175,22 +176,35 @@ The English spellings were transliterated from Kannada and still need KRA's conf
 - **Meeting at the association hall:** a meeting with felicitation was held there.
 - **Missing details:** dates are not yet known.
 
+### Second committee (16 June 2024)
+
+| Post | Name |
+|---|---|
+| President | Guru Prasad M V |
+| Vice President | Nagaraj R V |
+| General Secretary | Kaarthik |
+| Secretary | Swamy Sajjana |
+| Joint Secretary | Nagraj Rao |
+| Treasurer | Nagaraj N G V |
+
+All confirmed by KRA, with a named photo for each person.
+
 ### First committee (23 March 2021)
 
-| Post | Name | Status |
+| Post | Name | Notes |
 |---|---|---|
 | President | Mahesh S N (Mahesh Gowda) | Confirmed |
 | Vice President | Mallikarjuna | Confirmed |
-| General Secretary | Kaarthik | Post confirmed; photo matched by message order |
-| Joint Secretary | Somasundaram | Post confirmed; photo matched by message order |
-| Joint Secretary | Jivan | Post confirmed; photo matched by message order |
-| Joint Secretary | Bharat | Post confirmed; photo matched by message order |
+| General Secretary | Kaarthik | Photo confirmed (same photo in the 2024 committee) |
+| Joint Secretary | Somasundaram | Photo matched by message order |
+| Committee member | Swamy Sajjana | Photo confirmed (same photo in the 2024 committee); 2021 post not given |
+| Joint Secretary | Jivan | No photo yet (card shows an initial) |
+| Joint Secretary | Bharat | Photo matched by message order |
 | Treasurer | Nagaraj N G V | Confirmed |
-| Committee member | Kalesh | To be confirmed |
+| Committee member | Kalesh | Photo matched by message order |
 | Legal Advisor | Shah | Confirmed |
-| Legal Advisor | Guru Prasad | To be confirmed (KRA replied to the red t-shirt photo, sent at 4:39 pm, with "Shah and Guru Prasad legal advisor") |
+| Legal Advisor | Guru Prasad M V | Confirmed |
 
-- **Unconfirmed matches (internal note only):** the photos for Kaarthik, Somasundaram, Jivan and Bharat were assigned in the order they were sent on WhatsApp (4:28, 4:30, 4:32 and 4:34 pm). Kalesh was assigned to the 4:42 pm photo. The live site does NOT show any "to be confirmed" tags or mention WhatsApp, because it is a professional public site. If KRA reports a wrong match, swap the image files or names.
 - **Photo crops:** faces only. The register pages behind the photos contain handwritten addresses and phone numbers, so never publish the full pages.
 
 ### KRA Election and installation ceremony 2026
