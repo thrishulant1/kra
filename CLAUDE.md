@@ -181,16 +181,16 @@ The English spellings were transliterated from Kannada and still need KRA's conf
 |---|---|---|
 | President | Mahesh S N (Mahesh Gowda) | Confirmed |
 | Vice President | Mallikarjuna | Confirmed |
-| General Secretary | Kaarthik | Post confirmed; photo to be confirmed |
-| Joint Secretary | Somasundaram | Post confirmed; photo to be confirmed |
-| Joint Secretary | Jivan | Post confirmed; photo to be confirmed |
-| Joint Secretary | Bharat | Post confirmed; photo to be confirmed |
+| General Secretary | Kaarthik | Post confirmed; photo matched by message order |
+| Joint Secretary | Somasundaram | Post confirmed; photo matched by message order |
+| Joint Secretary | Jivan | Post confirmed; photo matched by message order |
+| Joint Secretary | Bharat | Post confirmed; photo matched by message order |
 | Treasurer | Nagaraj N G V | Confirmed |
 | Committee member | Kalesh | To be confirmed |
 | Legal Advisor | Shah | Confirmed |
 | Legal Advisor | Guru Prasad | To be confirmed (KRA replied to the red t-shirt photo, sent at 4:39 pm, with "Shah and Guru Prasad legal advisor") |
 
-- **"To be confirmed" tags:** the photos for Kaarthik, Somasundaram, Jivan and Bharat were assigned in the order they were sent on WhatsApp (4:28, 4:30, 4:32 and 4:34 pm). Kalesh was assigned to the 4:42 pm photo. These cards show a "To be confirmed" tag (`<span class="tbc">`). Remove the tag once KRA approves, or swap the image files if a name is wrong.
+- **Unconfirmed matches (internal note only):** the photos for Kaarthik, Somasundaram, Jivan and Bharat were assigned in the order they were sent on WhatsApp (4:28, 4:30, 4:32 and 4:34 pm). Kalesh was assigned to the 4:42 pm photo. The live site does NOT show any "to be confirmed" tags or mention WhatsApp, because it is a professional public site. If KRA reports a wrong match, swap the image files or names.
 - **Photo crops:** faces only. The register pages behind the photos contain handwritten addresses and phone numbers, so never publish the full pages.
 
 ### KRA Election and installation ceremony 2026
@@ -274,3 +274,7 @@ Always use these variables. Never hard-code new colours.
 4. Check that nav links jump to the right sections, that the mobile "Menu" button opens and closes, that the gallery album buttons filter correctly, that the lightbox opens and closes (including the Esc key), and that the member search filters rows.
 5. Keep the file name `index.html` and keep the `images` folder next to it. GitHub Pages needs both.
 6. Test over a local web server (e.g. `python3 -m http.server`) and confirm that no image is broken.
+
+## Tone rule
+
+This is KRA's live public website. Never show internal notes on the page: no "to be confirmed" tags, no mentions of WhatsApp or drafts, no "matched from messages" text. Keep these notes in this file only.
