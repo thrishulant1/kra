@@ -274,6 +274,10 @@ textarea{min-height:90px;resize:vertical}
 .lb.open{display:grid}.lb img{max-height:85vh;max-width:100%;border-radius:8px}
 .lb p{color:#fff;text-align:center;margin:.6rem 0 0}
 .lb button{position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);right:12px;background:#fff;color:#111;border:0;border-radius:8px;padding:.5rem .9rem;font:inherit;font-weight:600;cursor:pointer}
+.totop{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40;width:48px;height:48px;border-radius:50%;border:0;background:var(--green);color:var(--on-green);display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.22);opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .25s,transform .25s,visibility .25s}
+.totop.show{opacity:1;visibility:visible;transform:none}
+.totop:hover{filter:brightness(1.12)}
+@media (prefers-reduced-motion:reduce){.totop{transition:none}}
 footer{padding:2.5rem 0;color:var(--muted);font-size:.9rem}
 footer .wrap.credit{display:flex;flex-direction:column;align-items:center;margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--line);text-align:center;font-size:.85rem}
 footer .credit p{margin:.15rem 0}
@@ -560,6 +564,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
   </div>
 </footer>
 
+<button class="totop" id="totop" aria-label="Back to top" title="Back to top"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo"><button id="lbx">Close</button><figure style="margin:0"><img loading="lazy" id="lbimg" alt=""><p id="lbcap"></p></figure></div>
 <script>
 // Mobile menu
@@ -604,6 +609,11 @@ function carousel(box,dotsEl,delay,first){
 carousel(document.getElementById('teams'),document.getElementById('teams-dots'),3000,2000);
 carousel(document.getElementById('posters'),document.getElementById('posters-dots'),2000,1000);
 ['meet-strip','cricket-strip','election-strip'].forEach(id=>carousel(document.getElementById(id),document.getElementById(id+'-dots'),3000,2000));
+
+// Back-to-top button
+const tt=document.getElementById('totop');
+addEventListener('scroll',()=>tt.classList.toggle('show',scrollY>600),{passive:true});
+tt.addEventListener('click',()=>scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
 
 // Lightbox
 const lb=document.getElementById('lb'),lbi=document.getElementById('lbimg'),lbc=document.getElementById('lbcap');
